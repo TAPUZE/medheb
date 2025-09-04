@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PillRight | ניהול תרופות חכם, שקט נפשי למשפחה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00529B;
+            --secondary-color: #00A8E8;
+            --accent-color: #9DDFD3;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            text-align: right;
+        }
+
+       .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            color: var(--primary-color);
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        header.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        header.logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+       .hero {
+            background: linear-gradient(rgba(0, 82, 155, 0.7), rgba(0, 168, 232, 0.5)), url('https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            height: 100vh;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: var(--header-height);
+        }
+
+       .hero-content {
+            max-width: 800px;
+        }
+
+       .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+       .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+       .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+       .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section.bg-light {
+            background: var(--light-gray);
+        }
+
+       .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            font-weight: 900;
+            position: relative;
+        }
+        
+       .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+       .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+       .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+       .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+        }
+
+       .card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+       .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+       .stats-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+       .stat {
+            color: var(--primary-color);
+        }
+
+       .stat.number {
+            font-size: 3.5rem;
+            font-weight: 900;
+        }
+
+       .stat p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+       .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+       .solution-grid.text-content {
+            text-align: right;
+        }
+        
+       .solution-grid.text-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+       .solution-grid.image-placeholder {
+            background: var(--accent-color);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+       .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+       .feature-list li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300A8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat right center;
+            padding-right: 35px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+       .competitors-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+       .competitors-table th,.competitors-table td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+
+       .competitors-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+        }
+
+       .competitors-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+       .competitors-table tr:last-child td {
+            border-bottom: none;
+        }
+
+       .competitors-table.our-product {
+            background-color: var(--accent-color)!important;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+       .competitors-table.our-product td:first-child {
+            font-weight: 900;
+        }
+
+       .roadmap {
+            position: relative;
+            padding: 40px 0;
+        }
+
+       .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            width: 3px;
+            background-color: var(--accent-color);
+            transform: translateX(50%);
+        }
+
+       .roadmap-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+
+       .roadmap-item:nth-child(odd) {
+            padding-right: 30px;
+            text-align: right;
+        }
+
+       .roadmap-item:nth-child(even) {
+            margin-right: 50%;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+       .roadmap-item::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 4px solid var(--secondary-color);
+            z-index: 1;
+        }
+
+       .roadmap-item:nth-child(odd)::after {
+            right: -11.5px;
+        }
+
+       .roadmap-item:nth-child(even)::after {
+            left: -8.5px;
+        }
+        
+       .roadmap-content {
+            background: var(--white);
+            padding: 20px 30px;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+       .roadmap-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+       .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+       .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media(max-width: 992px) {
+           .grid-3 {
+                grid-template-columns: 1fr;
+            }
+           .solution-grid {
+                grid-template-columns: 1fr;
+            }
+           .solution-grid.image-placeholder {
+                order: -1;
+                margin-bottom: 30px;
+            }
+           .roadmap::before {
+                right: 10px;
+                transform: none;
+            }
+           .roadmap-item,.roadmap-item:nth-child(even) {
+                width: 100%;
+                padding-right: 50px;
+                padding-left: 0;
+                margin-right: 0;
+                text-align: right;
+            }
+           .roadmap-item::after,.roadmap-item:nth-child(even)::after {
+                right: -1.5px;
+                left: auto;
+            }
+        }
+        
+        @media(max-width: 768px) {
+           .hero h1 {
+                font-size: 2.5rem;
+            }
+           .hero p {
+                font-size: 1.2rem;
+            }
+            header nav {
+                display: none; /* Simple responsive solution */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">PillRight</a>
+            <nav>
+                <ul>
+                    <li><a href="#problem">הבעיה</a></li>
+                    <li><a href="#solution">הפתרון שלנו</a></li>
+                    <li><a href="#competitors">המתחרים</a></li>
+                    <li><a href="#partners">שותפויות</a></li>
+                    <li><a href="#roadmap">מפת דרכים</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>ניהול תרופות חכם. שקט נפשי למשפחה.</h1>
+            <p>PillRight ממיין, אורז, מזכיר ומתקשר. הפתרון המקיף הראשון בעולם לניהול תרופות מהבית, המעניק עצמאות ליקיריכם ושקט נפשי עבורכם.</p>
+            <a href="#solution" class="btn">גלו את הפתרון</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="problem" class="bg-light">
+            <div class="container">
+                <h2 class="section-title">משבר ההיענות הטיפולית: בעיה של כולנו</h2>
+                <div class="grid-3">
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">💊</i>
+                        <h3>ריבוי תרופות (Polypharmacy)</h3>
+                        <p>בישראל, כמו בעולם, קשישים רבים נוטלים 4 תרופות או יותר מדי יום. ניהול מורכב זה מוביל לטעויות, בלבול וסיכונים בריאותיים.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">❤️</i>
+                        <h3>הנטל על המטפלים</h3>
+                        <p>כ-70% מבני המשפחה המטפלים אחראים על ניהול התרופות של יקיריהם. משימה זו גורמת ללחץ, חרדה וגוזלת זמן יקר.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">💸</i>
+                        <h3>העלות הכלכלית והבריאותית</h3>
+                        <p>אי-היענות לטיפול תרופתי גורמת לנזק בריאותי עצום ומהווה נטל כלכלי כבד על מערכת הבריאות, המוערך במיליארדי שקלים בשנה.</p>
+                    </div>
+                </div>
+                <div class="stats-container fade-in">
+                    <div class="stat">
+                        <div class="number" data-target="50">0</div>
+                        <p>אחוז מהמטופלים הכרוניים שאינם נוטלים תרופות כראוי</p>
+                    </div>
+                    <div class="stat">
+                        <div class="number" data-target="8">0</div>
+                        <p>מיליארד דולר - שווי שוק צפוי למתקני תרופות אוטומטיים עד 2030</p>
+                    </div>
+                    <div class="stat">
+                        <div class="number" data-target="89">0</div>
+                        <p>אחוז מהמבוגרים מעל גיל 65 הנוטלים לפחות תרופת מרשם אחת</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution">
+            <div class="container">
+                <h2 class="section-title">הפתרון שלנו: פלטפורמת היענות מחוברת</h2>
+                <p style="text-align: center; max-width: 800px; margin: -40px auto 60px;">PillRight הוא לא עוד מתקן תרופות. זוהי מערכת אקולוגית שלמה שנועדה לפתור את כל שרשרת ניהול התרופות, מהמיון ועד לצריכה, תוך חיבור בין המטופל, המטפל והצוות הרפואי.</p>
+
+                <div class="solution-grid fade-in">
+                    <div class="text-content">
+                        <h3>מיון ואריזה אוטומטיים בבית</h3>
+                        <p>החידוש המרכזי שלנו: PillRight הוא המכשיר הביתי הראשון שממיין ואורז אוטומטית את כל התרופות היומיות לשקיות (פאוצ'ים) אישיות, מסומנות וניידות. לא עוד מיון ידני שבועי, לא עוד קופסאות מסורבלות. רק לקחת את השקית היומית ולצאת מהבית בחופשיות.</p>
+                    </div>
+                    <div class="image-placeholder">תמונה/אנימציה של אריזת פאוצ'ים</div>
+                </div>
+
+                <div class="solution-grid fade-in" style="margin-top: 60px;">
+                    <div class="image-placeholder">תמונה/אנימציה של האפליקציה</div>
+                    <div class="text-content">
+                        <h3>אקוסיסטם דיגיטלי למטופל ולמטפל</h3>
+                        <p>האפליקציה האינטואיטיבית שלנו מאפשרת למטופלים ולמטפלים לנהל את לוח הזמנים, לקבל תזכורות חכמות ולעקוב אחר היסטוריית הנטילה. הפורטל למטפל מספק:</p>
+                        <ul class="feature-list">
+                            <li>ניטור היענות בזמן אמת מכל מקום.</li>
+                            <li>התראות מיידיות על מנה שנשכחה, תקלה או מלאי נמוך.</li>
+                            <li>ניהול הרשאות למעגל טיפולי רחב (משפחה, מטפל מקצועי).</li>
+                            <li>מרכז תקשורת מאובטח לתקשורת ישירה ושקט נפשי.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitors" class="bg-light">
+            <div class="container">
+                <h2 class="section-title">השוואה למתחרים</h2>
+                <div class="fade-in">
+                    <table class="competitors-table">
+                        <thead>
+                            <tr>
+                                <th>תכונה</th>
+                                <th>PillRight (המוצר שלנו)</th>
+                                <th>Hero</th>
+                                <th>MedaCube</th>
+                                <th>Pria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="our-product">
+                                <td>שיטת הנפקה</td>
+                                <td>אריזת פאוצ'ים אישית וניידת</td>
+                                <td>הנפקה לכוס</td>
+                                <td>הנפקה לכוס</td>
+                                <td>הנפקה לכוס</td>
+                            </tr>
+                            <tr>
+                                <td>קיבולת תרופות</td>
+                                <td>12-15 סוגים, עד 90 יום</td>
+                                <td>10 סוגים, עד 90 יום</td>
+                                <td>16 סוגים, עד 90 יום</td>
+                                <td>28 מנות בלבד</td>
+                            </tr>
+                            <tr>
+                                <td>אבטחה</td>
+                                <td>עמיד בפני פתיחה, נעילה אופציונלית</td>
+                                <td>אבטחה נמוכה (הנפקה לפי דרישה)</td>
+                                <td>אבטחה גבוהה (נעילת מתכת והתראות)</td>
+                                <td>ללא נעילה</td>
+                            </tr>
+                            <tr>
+                                <td>קישוריות</td>
+                                <td>Wi-Fi וסלולר</td>
+                                <td>Wi-Fi בלבד</td>
+                                <td>Wi-Fi בלבד</td>
+                                <td>Wi-Fi בלבד</td>
+                            </tr>
+                            <tr class="our-product">
+                                <td>בידול מרכזי</td>
+                                <td>ניידות (פאוצ'ים), אימות צריכה</td>
+                                <td>מחיר נגיש, שירותי בית מרקחת</td>
+                                <td>אבטחה ברמה קלינית</td>
+                                <td>שיחות וידאו, עוזר קולי</td>
+                            </tr>
+                            <tr>
+                                <td>מודל עסקי</td>
+                                <td>רכישה + מנוי מדורג</td>
+                                <td>השכרה + מנוי</td>
+                                <td>רכישה חד-פעמית</td>
+                                <td>רכישה + מנוי</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners">
+            <div class="container">
+                <h2 class="section-title">אסטרטגיית שותפויות מנצחת</h2>
+                <div class="grid-3">
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">🏥</i>
+                        <h3>בתי מרקחת ורשתות פארם</h3>
+                        <p>אינטגרציה למילוי חוזר אוטומטי של מרשמים ופישוט תהליך הרכישה עבור המשתמשים, תוך יצירת חוויה חלקה מקצה לקצה.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">👨‍⚕️</i>
+                        <h3>ספקי שירותי בריאות</h3>
+                        <p>שיתופי פעולה עם קופות חולים, בתי חולים ומרפאות לביצוע פיילוטים קליניים, ושימוש במודל החזר הוצאות (RTM) להפיכת המכשיר לכלי טיפולי מוכר.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <i class="icon-placeholder">💻</i>
+                        <h3>שותפים טכנולוגיים</h3>
+                        <p>שילוב עם פלטפורמות בריאות דיגיטלית קיימות, מערכות תיעוד רפואי (EHR) וספקי טלה-רפואה ליצירת מערכת בריאות מחוברת באמת.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="bg-light">
+            <div class="container">
+                <h2 class="section-title">מפת הדרכים שלנו</h2>
+                <div class="roadmap">
+                    <div class="roadmap-item fade-in">
+                        <div class="roadmap-content">
+                            <h3>שלב 1 (חודשים 1-9): פיתוח MVP ואימות קליני</h3>
+                            <p>בניית מוצר מינימלי בר-קיימא (MVP) עם הנפקה לכוס, פיתוח פלטפורמת התוכנה המאובטחת, ובחירת יצרן רפואי. במקביל, יצירת שותפות עם גוף רפואי לפיילוט ראשוני.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-in">
+                        <div class="roadmap-content">
+                            <h3>שלב 2 (חודשים 10-18): השקה ראשונית ופיילוט RTM</h3>
+                            <p>השקה מוגבלת לשוק הפרטי (D2C) לאיסוף משוב, ובמקביל ביצוע פיילוט קליני מבוקר לבדיקת מודל ההחזר הרפואי (RTM) ואיסוף נתונים לאישור FDA.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-in">
+                        <div class="roadmap-content">
+                            <h3>שלב 3 (חודשים 19-30): צמיחה עם אריזת פאוצ'ים ושותפויות</h3>
+                            <p>השקת גרסה 2 של המכשיר עם יכולת אריזת הפאוצ'ים הייחודית. מיקוד אסטרטגי במכירות B2B2C לספקי שירותי בריאות והרחבת שותפויות עם רשתות פארם וחברות ביטוח.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PillRight. כל הזכויות שמורות.</p>
+            <p>פותח כדי להעניק שקט נפשי למשפחות ברחבי העולם.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in on scroll animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Animated number counters
+            const counters = document.querySelectorAll('.number');
+            const speed = 200; // The lower the slower
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+            
+            // Observer for counters to start animation when visible
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            const statsContainer = document.querySelector('.stats-container');
+            if(statsContainer) {
+                counterObserver.observe(statsContainer);
+            }
+
+            // Smooth scrolling for nav links
+            document.querySelectorAll('header nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
